@@ -1,0 +1,10 @@
+[
+  {"repo":"moneybook","name":"记账本","english":"MoneyBook","description":"把每一笔日常，记得明明白白。原生 macOS 记账工具，支持账单导入、账户管理与收支统计。","category":"desktop","platform":"macOS","tech":"SwiftUI","tone":"green","icon":"wallet","featured":true,"note":"本地优先 · 数据留在自己手中"},
+  {"repo":"shiguang","name":"拾光","english":"Photo Archive","description":"给散落的照片，一个有序的家。按拍摄年月与城市归档，支持批量校时与操作撤销。","category":"desktop","platform":"macOS","tech":"Swift","tone":"sand","icon":"photo","note":"照片归档 · 留住每一刻"},
+  {"repo":"moye","name":"墨页","english":"Moye","description":"从一个灵感，到一整个故事。本地小说写作工具，支持设定、大纲、AI 辅助创作与多人协作。","category":"desktop","platform":"macOS / Windows","tech":"TypeScript","tone":"purple","icon":"book","note":"小说创作 · 让故事慢慢生长"},
+  {"repo":"mark","name":"Mark","english":"Markdown Editor","description":"让文字回到写作本身。轻量 Markdown 桌面编辑器，支持即时渲染、离线公式与多种阅读主题。","category":"desktop","platform":"macOS","tech":"TypeScript","tone":"blue","icon":"mark","note":"轻量编辑 · 专注眼前的文字"},
+  {"repo":"xiangyingChat","name":"响应消息","english":"Chat Reader","description":"换一种熟悉的方式，重读旧时对话。将导出的 HTML 聊天记录呈现为聊天气泡，支持搜索与长图导出。","category":"desktop","platform":"macOS / Windows","tech":"Electron","tone":"mint","icon":"chat","note":"聊天记录 · 让回忆重新可读"},
+  {"repo":"-","name":"好瓜","english":"Community","description":"好瓜，一起聊。中文热点社区，支持图文讨论、回复互动，也有可以与朋友一起玩的牌室。","category":"web","platform":"Web","tech":"TypeScript","tone":"pink","icon":"melon","note":"社区与游戏 · 一起分享日常"},
+  {"repo":"ntfsForMac","name":"NTFS for Mac","english":"File Utility","description":"面向 Mac 的菜单栏文件交换工具。当前为开发预览，写入尚未开放，保留原生只读访问。","category":"desktop","platform":"macOS","tech":"SwiftUI","tone":"gray","icon":"drive","note":"开发预览 · 探索文件交换"},
+  {"repo":"fishfishfish","name":"鱼干实验室","english":"Fish Lab","description":"围绕 BTC 模拟盘的 Python 策略研究项目，包含回测、风险控制与只读观测面板。","category":"experiment","platform":"Python / Docker","tech":"Python","tone":"yellow","icon":"fish","note":"实验项目 · 模拟盘策略研究"}
+]

@@ -1,5 +1,6 @@
 import { readFile, writeFile, mkdir, cp, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const projects = JSON.parse(await readFile(`${root}data/projects.json`, 'utf8'));
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -15,14 +16,23 @@ const html = projects.map(p => {
 const featured = projects.find(p => p.featured) || projects[0];
 const featuredHtml = `<article class="featured-project"><a href="${url(featured)}" target="_blank" rel="noopener noreferrer" aria-label="在 GitHub 查看精选项目${escape(featured.name)}（新窗口）"><img class="featured-image" src="./images/${photos[featured.repo]}.jpg" alt="窗边的工作桌，放着笔记本电脑、咖啡与手写便笺" width="1400" height="900" fetchpriority="high"><div class="featured-overlay" aria-hidden="true"></div><span class="featured-badge">THE FEATURED PROJECT</span><div class="featured-copy"><p class="featured-meta">Chai <span aria-hidden="true">·</span> 精选项目 <span aria-hidden="true">·</span> ${escape(featured.platform)}</p><h2>${escape(featured.name)} MoneyBook</h2><p>${escape(featured.description)}</p><div class="tags"><span>${escape(featured.tech)}</span><span>本地优先</span><span>个人记账</span></div></div><span class="featured-arrow" aria-hidden="true">↗</span></a></article>`;
 const template = await readFile(`${root}src/index.html`, 'utf8');
-const output = template.replaceAll('{{COUNT}}', String(projects.length).padStart(2,'0')).replace('{{FEATURED}}', featuredHtml).replace('{{PROJECTS}}', html);
+let output = template.replaceAll('{{COUNT}}', String(projects.length).padStart(2,'0')).replace('{{FEATURED}}', featuredHtml).replace('{{PROJECTS}}', html);
+const assets = [];
+for (const file of ['styles.css','app.js']) {
+  const content = await readFile(`${root}src/${file}`);
+  const hash = createHash('sha256').update(content).digest('hex').slice(0,10);
+  const dot = file.lastIndexOf('.');
+  const name = `${file.slice(0,dot)}.${hash}${file.slice(dot)}`;
+  output = output.replace(`./${file}`, `./${name}`);
+  assets.push({ name, content });
+}
 if (/\{\{\w+\}\}/.test(output)) throw new Error('Unresolved template token');
 for (const name of Object.values(photos)) await readFile(`${root}public/images/${name}.jpg`);
 await rm(`${root}dist`, { recursive:true, force:true });
 await mkdir(`${root}dist`, { recursive:true });
 await writeFile(`${root}dist/index.html`, output);
 await cp(`${root}public`, `${root}dist`, { recursive:true });
-for (const file of ['styles.css','app.js']) await cp(`${root}src/${file}`, `${root}dist/${file}`);
+for (const { name, content } of assets) await writeFile(`${root}dist/${name}`, content);
 await writeFile(`${root}dist/.nojekyll`, '');
 await writeFile(`${root}dist/robots.txt`, 'User-agent: *\nAllow: /\nSitemap: https://hsjv-chai.github.io/sitemap.xml\n');
 await writeFile(`${root}dist/sitemap.xml`, '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://hsjv-chai.github.io/</loc></url></urlset>');

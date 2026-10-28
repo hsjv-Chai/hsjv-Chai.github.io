@@ -22,7 +22,7 @@ npm run dev
 - `src/styles.css`：颜色、排版与响应式布局。
 - `public/images/`：项目主题配图；来源见 `public/images/SOURCES.md`。配图不是应用截图。
 
-项目分类为 `desktop`、`web`、`experiment`。添加项目后运行 `npm run build`，数量和卡片由构建脚本生成。项目实际可用平台与状态以各仓库 README 为准。所有项目卡片直接打开相应公开仓库。
+项目分类为 `desktop`、`web`、`skills`、`experiment`。添加项目后运行 `npm run build`，数量和卡片由构建脚本生成。项目实际可用平台与状态以各仓库 README 为准。所有项目卡片直接打开相应公开仓库。
 
 ## 发布
 

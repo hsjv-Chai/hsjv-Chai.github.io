@@ -4,8 +4,8 @@ import { createHash } from 'node:crypto';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const projects = JSON.parse(await readFile(`${root}data/projects.json`, 'utf8'));
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const photos = { moneybook:'featured', shiguang:'shiguang', moye:'moye', mark:'mark', xiangyingChat:'chat', '-':'community', ntfsForMac:'drive', fishfishfish:'fish' };
-const categoryNames = { desktop:'桌面工具', web:'网页应用', experiment:'实验项目' };
+const photos = { moneybook:'featured', shiguang:'shiguang', moye:'moye', mark:'mark', xiangyingChat:'chat', '-':'community', ntfsForMac:'drive', fishfishfish:'fish', 'modern-web-ui-skill':'web-ui' };
+const categoryNames = { desktop:'桌面工具', web:'网页应用', experiment:'实验项目', skills:'开发技能' };
 const url = project => `https://github.com/hsjv-Chai/${encodeURIComponent(project.repo)}`;
 const seen = new Set();
 const html = projects.map(p => {

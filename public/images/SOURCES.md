@@ -10,3 +10,5 @@ Photographs are thematic editorial covers, not application screenshots or images
 - community.jpg — https://images.unsplash.com/photo-1528605248644-14dd04022da1
 - drive.jpg — https://images.unsplash.com/photo-1558494949-ef010cbdcc31
 - fish.jpg — https://images.unsplash.com/photo-1551288049-bebda4e38f71
+
+- web-ui.jpg — https://images.unsplash.com/photo-1498050108023-c5249f4df085
